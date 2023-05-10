@@ -1,0 +1,73 @@
+.all {
+  font-size: 24px;
+  color: #2e3b55;
+  font-family: "Caveat", cursive;
+  /* background-image : linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); */
+  margin-top: 10px;
+  /* color:azure; */
+}
+
+.header {
+  font-size: 28px;
+  font-family: "Caveat", cursive;
+}
+
+.bill {
+  margin-top: 60px;
+  font-size: 36px;
+  font-family: "Noto Serif", serif;
+}
+
+.slogan {
+  font-size: 20px;
+  color: #2e3b55;
+  font-family: "Dancing Script", cursive;
+}
+
+.payment-btn {
+  margin-top: 20px;
+  color: #2e3b55;
+  padding: 60px;
+}
+
+.Add-data-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  gap: 15px;
+  margin-left: 100px;
+  padding: 50px;
+  width: 80%;
+}
+
+.background-img {
+  height: 100vh;
+  margin: 0px auto;
+  width: 98.7%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+.text {
+  display: inline;
+  width: 100%;
+}
+
+.read-or-hide {
+  color: #2e3b55;
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.period {
+  font-size: 0.9rem;
+}
