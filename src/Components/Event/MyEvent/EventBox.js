@@ -6,7 +6,7 @@ export function EventBox({ eventList, index }) {
   const id = eventList;
 
   const GetEvent = async () => {
-    const res = await fetch(`http://localhost:8000/EventDetails/${id}`, {
+    const res = await fetch(`https://event-management-backend-phiv.onrender.com/EventDetails/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

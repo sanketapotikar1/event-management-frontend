@@ -21,7 +21,7 @@ function NewEvent() {
 
   const addevent = (newevent) => {
     console.log(`addevent triggred`);
-    fetch(`http://localhost:8000/addevents`, {
+    fetch(`https://event-management-backend-phiv.onrender.com/addevents`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newevent),

@@ -11,7 +11,7 @@ function Events() {
   // Validate event API
 
   const getdata = async () => {
-    const res = await fetch("http://localhost:8000/events", {
+    const res = await fetch("https://event-management-backend-phiv.onrender.com/events", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

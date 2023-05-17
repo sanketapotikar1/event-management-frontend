@@ -11,7 +11,7 @@ function MyEvent() {
   const ValidUser = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("http://localhost:8000/validuser", {
+    const res = await fetch("https://event-management-backend-phiv.onrender.com/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

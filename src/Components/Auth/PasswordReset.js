@@ -17,7 +17,7 @@ function PasswordReset() {
     } else if (!email.includes("@")) {
       alert("includes @ in your email!");
     } else {
-      const res = await fetch("http://localhost:8000/sendpasswordlink", {
+      const res = await fetch("https://event-management-backend-phiv.onrender.com/sendpasswordlink", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

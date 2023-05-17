@@ -45,7 +45,7 @@ function Login() {
     } else {
       console.log("user login succesfully done");
 
-      const data = await fetch("http://localhost:8000/login", {
+      const data = await fetch("https://event-management-backend-phiv.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

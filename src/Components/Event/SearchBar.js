@@ -11,7 +11,7 @@ export function SearchBar({ eventList, seteventList }) {
 
   const getdata = async () => {
     console.log(searchValue);
-    const res = await fetch(`http://localhost:8000/search/${searchValue}`, {
+    const res = await fetch(`https://event-management-backend-phiv.onrender.com/${searchValue}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

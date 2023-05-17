@@ -33,7 +33,7 @@ function App() {
   const ValidUser = async () => {
     let token = localStorage.getItem("usersdatatoken");
 
-    const res = await fetch("http://localhost:8000/validuser", {
+    const res = await fetch("https://event-management-backend-phiv.onrender.com/validuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ function App() {
             />
             <Route path="/MyEvent" element={<MyEvent />} />
 
-            {/* <Route path="*" element={<Error />} /> */}
+            <Route path="*" element={<Error />} />
           </Routes>
           <Footer />
         </>
