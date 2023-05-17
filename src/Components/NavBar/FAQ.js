@@ -3,19 +3,24 @@ import React, { useState } from "react";
 
 function FAQ() {
   const QuestionList = [
+    // {
+    //   question: "When is the event? and What is the exact location? ",
+    //   answer:
+    //     "Event location and Date and Time details given in Event details. Please check My Event page !!!",
+    // },
     {
-      question: "Where do I collect my product after renting from your site ? ",
-      answer:
-        "Your product will be deliver to your address you provided during renting products. ",
+      question: "What are the parking arrangements and directions?",
+      answer: "Yes We do have free Parking arrangemnts please check more details in event info.",
     },
     {
-      question: "How many prior we need book our product?",
-      answer: "prefered will 2-3 days but you can do one day before as well",
+      question: "Can I register at the venue?",
+      answer:
+        "Yes, you can ! but if all registation is full then register at venue will not available. ",
     },
     {
-      question: "How can I cancel the rented product",
+      question: "If I have questions, who can I contact?",
       answer:
-        "Yes !! you can cancel the product anytime, we have standard process to cancel the product. please check out !!",
+        "Please drop a message to us on contact us page.",
     },
   ];
 
@@ -23,13 +28,14 @@ function FAQ() {
     "https://images.unsplash.com/photo-1551590192-8070a16d9f67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YWJvdXQlMjB1c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
 
   const imageStyle = {
-    backgroundImage: `url(${imageLink})`,
+    backgroundImage: `url("Images/question.jpg")`,
     width: "650px",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     opacity: "1.0",
     height: "450px",
     borderRadius: "5px",
+    cursor: "pointer",
   };
 
   return (
@@ -47,7 +53,7 @@ function FAQ() {
             textAlign: "start",
           }}
         >
-          <Box style={{ width: "50%" }}>
+          <Box style={{ width: "50%", marginLeft: "50px" }}>
             <Box style={imageStyle}></Box>
           </Box>
           <Box
@@ -59,31 +65,19 @@ function FAQ() {
             }}
           >
             <h3> we know you have lot's of Question in your mind </h3>
-            <h4 style={{ marginTop: "20px" }}>
+            <h4 style={{ marginTop: "20px", fontSize: "14px" }}>
               Don't worry here we have given all common question that you might
               have !!!
             </h4>
 
-            <Box style={{ textAlign: "start", marginTop: "50px" }}>
+            <Box style={{ textAlign: "start", marginTop: "20px" }}>
               <hr></hr>
-              <h3>PRODUCT</h3>
-              <h4>The right product when you need it on equipment rental</h4>
-              <p style={{ marginTop: "30px", lineHeight: "1.3" }}>
-                The equipment rental industry has the specific product for the
-                specific job leading to efficiency gains. Equipment is regularly
-                maintained and renting ensures a high quality and reliability of
-                the product when on site.
-              </p>
-              <h4 style={{ marginTop: "30px", lineHeight: "1.3" }}>
-                Please click below question to find out the answer
-              </h4>
+              {QuestionList.map((QAset) => (
+                <QuestionBox QuestionList={QAset} />
+              ))}
             </Box>
           </Box>
         </Box>
-
-        {QuestionList.map((QAset) => (
-          <QuestionBox QuestionList={QAset} />
-        ))}
       </Box>
     </>
   );
@@ -98,8 +92,8 @@ function QuestionBox({ QuestionList }) {
 
   const totalBoxStyle = {
     margin: "40px auto",
-    width: "90%",
-    height: answer ? "80px" : "40px",
+    width: "100%",
+    height: answer ? "120px" : "40px",
     boxShadow: "2px 3px 3px 2px grey",
     textAlign: "start",
     borderRadius: "10px",

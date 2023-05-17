@@ -3,19 +3,21 @@ import PlaceIcon from "@mui/icons-material/Place";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import PersonSharpIcon from "@mui/icons-material/PersonSharp";
+import SummarizeIcon from "@mui/icons-material/Summarize";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EventDetails() {
   const [event, setEvent] = useState(null);
   const [EventImage, setEventImage] = useState(null);
 
+  const Navigate = useNavigate();
+
   let { id } = useParams();
 
   const eventUrl = event ? event.EventImage : "";
-  
 
-// const eventUrl = "https://media.istockphoto.com/id/1461631902/photo/group-of-college-students-discussing-about-project-with-team-leader-from-laptop-at-college.jpg?s=612x612&w=0&k=20&c=6KPm5e4SPQ2r0iHWOU0ujPn3bdCy60QfULFNCeSpEbs="
+  // const eventUrl = "https://media.istockphoto.com/id/1461631902/photo/group-of-college-students-discussing-about-project-with-team-leader-from-laptop-at-college.jpg?s=612x612&w=0&k=20&c=6KPm5e4SPQ2r0iHWOU0ujPn3bdCy60QfULFNCeSpEbs="
 
   // GET - get single event
 
@@ -41,9 +43,7 @@ function EventDetails() {
   };
 
   useEffect(() => {
-
-      GetEvent();
-
+    GetEvent();
   }, []);
 
   function hoursConvertor(time) {
@@ -83,27 +83,29 @@ function EventDetails() {
         >
           <Box
             style={{
-              width: "65%",
+              width: "60%",
               height: "600px",
             }}
           >
-            <Box
-              style={{
-                background: `url(${ eventUrl })`,
-                height: "600px",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                opacity: "1.0",
-              }}
-            >
-
-            </Box>
+            {event ? (
+              <Box
+                style={{
+                  background: `url(${eventUrl})`,
+                  height: "600px",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  opacity: "1.0",
+                }}
+              ></Box>
+            ) : (
+              ""
+            )}
           </Box>
 
           <Box
             style={{
               display: "grid",
-              width: "35%",
+              width: "40%",
             }}
           >
             {/* Event Name */}
@@ -120,8 +122,8 @@ function EventDetails() {
             >
               {event ? event.eventName : ""}
             </Box>
-            <Box style={{ display: "grid", height: "200px" }}>
-              <Box style={{ display: "grid", height: "200px" }}>
+            <Box style={{ display: "grid", height: "300px" }}>
+              <Box style={{ display: "grid", height: "300px" }}>
                 <Box style={{ display: "flex", width: "100%" }}>
                   <Box
                     style={{ display: "flex", width: "30%", margin: "auto" }}
@@ -163,7 +165,7 @@ function EventDetails() {
                     {event
                       ? hoursConvertor(event.startDateTime.slice(11, 16))
                       : ""}{" "}
-                    -
+                    -{" "}
                     {event
                       ? hoursConvertor(event.endDateTime.slice(11, 16))
                       : ""}
@@ -211,12 +213,33 @@ function EventDetails() {
                     {event ? event.SpeakerName : ""}
                   </Box>
                 </Box>
+
+                <Box style={{ display: "flex", width: "100%" }}>
+                  <Box
+                    style={{ display: "flex", width: "30%", margin: "auto" }}
+                  >
+                    <SummarizeIcon
+                      style={{ fontSize: "30px", margin: "0px auto 0px auto" }}
+                    />
+                  </Box>
+                  <Box
+                    style={{
+                      fontSize: "14px",
+                      width: "70%",
+                      margin: "auto",
+                      textAlign: "start",
+                      fontFamily: "Montserrat, sans-serif",
+                    }}
+                  >
+                    {event ? event.SpeakerDetails : ""}
+                  </Box>
+                </Box>
               </Box>
             </Box>
-            <Box style={{ display: "grid", height: "100px" }}>
+            <Box style={{ display: "grid", height: "180px" }}>
               <p
                 style={{
-                  fontSize: "13px",
+                  fontSize: "14px",
                   margin: "auto",
                   fontFamily: "Roboto, sans-serif",
                 }}
@@ -229,14 +252,34 @@ function EventDetails() {
                   width: "90%",
                   height: "50px",
                   margin: "auto",
-                  background: "#0a0a23 ",
-                  //   color: "black",
+                  background: "orange",
+                  color: "black",
                   boxShadow: "2px 2px 2px 1px grey",
                   borderRadius: "10px",
                 }}
                 variant="contained"
+                onClick={() => {
+                    Navigate(`/StudentRegistration/${id}`);
+                  }}
               >
                 free registration here !!!
+              </Button>
+              <Button
+                style={{
+                  width: "90%",
+                  height: "50px",
+                  margin: "auto",
+                  background: "#4681f4",
+                  // color: "black",
+                  boxShadow: "2px 2px 2px 1px grey",
+                  borderRadius: "10px",
+                }}
+                variant="contained"
+                onClick={() => {
+                  Navigate("/events");
+                }}
+              >
+                Back to Event Page
               </Button>
             </Box>
           </Box>

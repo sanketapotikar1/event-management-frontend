@@ -38,7 +38,7 @@ function PasswordReset() {
   };
 
   const myStyle = {
-    backgroundImage: "url(./Images/camera.jpg)",
+    backgroundImage: "url(./Images/Home/HomeImage-1.jpg)",
     height: "100vh",
     margin: "0px, auto",
     width: "98.7%",

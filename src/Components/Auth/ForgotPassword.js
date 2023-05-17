@@ -70,11 +70,22 @@ function ForgotPassword() {
     }, 3000);
   },[]);
 
+  const myStyle = {
+    backgroundImage: "url(./Images/Home/HomeImage-1.jpg)",
+    height: "100vh",
+    margin: "0px, auto",
+    width: "98.7%",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    opacity: "0.8",
+  };
+
+
   return (
     <>
       {data2 ? (
         <>
-          <section>
+          <section style={myStyle}>
             <div className="form_data">
               <div className="form_heading">
                 <h1>Enter Your NEW Password</h1>

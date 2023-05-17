@@ -20,18 +20,12 @@ function NewEvent() {
   const [endDateTime, setEndDateTime] = useState(null);
 
   const addevent = (newevent) => {
-
-
-
-    console.log(newevent);
-
     console.log(`addevent triggred`);
     fetch(`http://localhost:8000/addevents`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newevent),
-    })
-    .then(() => Navigate("/Events"));
+    }).then(() => Navigate("/Events"));
   };
 
   const formvalidationSchema = yup.object({

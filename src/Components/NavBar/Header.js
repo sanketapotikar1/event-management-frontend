@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { LoginContext } from "../ContextProvider/Context";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,13 +18,27 @@ import { useNavigate } from "react-router-dom";
 const settings = ["Logout"];
 
 function Header() {
-  const Navigate = useNavigate();
+  const { logindata, setLoginData } = useContext(LoginContext);
 
-  // const [data, setData] = useState(false);
+  const [admin, setAdmin] = useState(false);
+
+  console.log(`login data in header`, logindata);
+
+
+  const [userData, setUserData] = useState(null);
+
+  const Navigate = useNavigate();
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const ButtonStyle = { my: 2, color: "white", display: "block", fontSize:"16px", marginLeft:"15px", marginTop:"5px" };
+  const ButtonStyle = {
+    my: 2,
+    color: "white",
+    display: "block",
+    fontSize: "16px",
+    marginLeft: "15px",
+    marginTop: "5px",
+  };
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -31,6 +47,62 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const logoutuser = async () => {
+    let token = localStorage.getItem("usersdatatoken");
+    console.log(token);
+
+    const res = await fetch("http://localhost:8000/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+        Accept: "application/json",
+      },
+      credentials: "include",
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (data.status === 201) {
+      console.log("use logout");
+      localStorage.removeItem("usersdatatoken");
+      setLoginData(false);
+      setUserData(null);
+      Navigate("/");
+    } else {
+      console.log("error");
+    }
+  };
+
+  // const ValidUser = async () => {
+  //   let token = localStorage.getItem("usersdatatoken");
+
+  //   const res = await fetch("http://localhost:8000/validuser", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: token,
+  //     },
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (data.status == 401 || !data) {
+  //     console.log("user not valid");
+  //   } else {
+  //     console.log("user verify", data);
+  //     setUserData(data);
+  //     console.log(`user valid data`, userData);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     ValidUser();
+  //   }, 1500);
+  // }, []);
 
   return (
     <>
@@ -69,16 +141,16 @@ function Header() {
               <Button onClick={() => Navigate("/")} style={ButtonStyle}>
                 Home
               </Button>
-              {/* {data ? ( */}
-              <Button
-                onClick={() => {
-                  Navigate("/Events");
-                }}
-                style={ButtonStyle}
-              >
-                Events
-              </Button>
-              {/* ) : null} */}
+              {logindata ? (
+                <Button
+                  onClick={() => {
+                    Navigate("/Events");
+                  }}
+                  style={ButtonStyle}
+                >
+                  Events
+                </Button>
+              ) : null}
 
               <Button
                 onClick={() => {
@@ -105,19 +177,38 @@ function Header() {
                 FAQ'S
               </Button>
 
-              <Box style={{marginLeft:"auto", marginRight:"20px"}}>
-              <Button
-                onClick={() => {
-                  Navigate("/newEvent");
+              <Box
+                style={{
+                  display: "flex",
+                  marginLeft: "auto",
+                  marginRight: "20px",
                 }}
-                style={ButtonStyle}
               >
-                New Event
-              </Button>
+                {logindata ? (
+                  <Button
+                    onClick={() => {
+                      Navigate("/MyEvent");
+                    }}
+                    style={ButtonStyle}
+                  >
+                    My Event
+                  </Button>
+                ) : null}
 
+                {logindata ? (
+                  // logindata.ValidUserOne.role == "Admin" ? (
+                  <Button
+                    onClick={() => {
+                      Navigate("/newEvent");
+                    }}
+                    style={ButtonStyle}
+                  >
+                    New Event
+                  </Button>
+                ) : // ) : null
+                null}
               </Box>
             </Box>
-            
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
@@ -144,7 +235,7 @@ function Header() {
                 {settings.map((setting) => (
                   <MenuItem
                     onClick={() => {
-                      // logoutuser();
+                      logoutuser();
                       handleCloseUserMenu();
                     }}
                   >

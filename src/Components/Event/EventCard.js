@@ -45,7 +45,7 @@ export function EventCard({ eventList }) {
                     height: "400px",
                     margin: "auto",
                     marginTop: "30px",
-                    marginBottom: "20px",
+                    marginBottom: "50px",
                     borderRadius: "2px",
                     boxShadow: "5px 5px 5px 3px grey",
                 }}

@@ -37,7 +37,7 @@ function Events() {
     <>
       <Box style={{ width: "100%", display: "flex" }}>
         <Box style={{ width: "100%", display: "grid" }}>
-          <SearchBar />
+          <SearchBar eventList={eventList } seteventList={seteventList} />
 
           {eventList.map((eventList, index) => (
             <EventCard eventList={eventList } index={index} />

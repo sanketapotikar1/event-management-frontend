@@ -10,10 +10,10 @@ function ContactUs() {
   };
 
   const imageLink =
-  "https://images.unsplash.com/photo-1551590192-8070a16d9f67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YWJvdXQlMjB1c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
+  "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29udGFjdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60";
 
 const imageStyle = {
-  backgroundImage: `url(${imageLink})`,
+  backgroundImage: `url("Images/contactus.jpg")`,
   width: "650px",
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
@@ -26,9 +26,8 @@ const imageStyle = {
     <>
       <Box class="container">
         <h1 class="line">Contact Us</h1>
-        <p id="content">
-          We are in Renting business since 2015 and we belive that Rent Anything
-          From Anyone
+        <p id="content" style={{fontSize:"16px"}}>
+        Get in Touch with us for All your Query and inquiry.
         </p>
         <Box class="section">
         <Box style={imageStyle}></Box>

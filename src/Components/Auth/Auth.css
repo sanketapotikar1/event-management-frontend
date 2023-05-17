@@ -24,11 +24,11 @@ section {
   
   .form_data h1 {
     font-size: 34px;
-    color: #2a4365;
+    color: #101820FF;
   }
   
   .form_data p {
-    color: #718096;
+    color: #101820FF;
     font-size: 15px;
     margin-top: 9px;
   }
@@ -94,7 +94,7 @@ section {
     border: none;
     outline: none;
     border-radius: 5px;
-    background-color: #1a365d;
+    background-color: #101820FF;
     color: #fff;
     font-weight: 600;
     font-size: 18px;
