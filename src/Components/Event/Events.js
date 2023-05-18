@@ -5,18 +5,20 @@ import { SearchBar } from "./SearchBar";
 import { EventCard } from "./EventCard";
 
 function Events() {
-
   const [eventList, seteventList] = useState([]);
 
   // Validate event API
 
   const getdata = async () => {
-    const res = await fetch("https://event-management-backend-phiv.onrender.com/events", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://event-management-backend-phiv.onrender.com/events",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = await res.json();
     console.log(data);
@@ -37,10 +39,10 @@ function Events() {
     <>
       <Box style={{ width: "100%", display: "flex" }}>
         <Box style={{ width: "100%", display: "grid" }}>
-          <SearchBar eventList={eventList } seteventList={seteventList} />
+          <SearchBar eventList={eventList} seteventList={seteventList} />
 
           {eventList.map((eventList, index) => (
-            <EventCard eventList={eventList } index={index} />
+            <EventCard eventList={eventList} index={index} />
           ))}
         </Box>
       </Box>
@@ -49,5 +51,3 @@ function Events() {
 }
 
 export default Events;
-
-

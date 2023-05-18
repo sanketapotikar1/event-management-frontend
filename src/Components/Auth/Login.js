@@ -43,7 +43,6 @@ function Login() {
     } else if (password.length < 6) {
       alert("password must be 6 char!");
     } else {
-      console.log("user login succesfully done");
 
       const data = await fetch("https://event-management-backend-phiv.onrender.com/login", {
         method: "POST",
@@ -62,8 +61,8 @@ function Login() {
       if (res.status === 201) {
         alert("Login Successfully done 😃!");
         localStorage.setItem("usersdatatoken", res.result.token);
-        console.log(`login user data`, res.result);
-        setLoginData(res.result );
+        console.log(`login user data`, res.result.userValid.role);
+        // setLoginData(res.result );
         Navigate("/events");
         setInpval({ ...inpval, email: "", password: "" });
       } else {
