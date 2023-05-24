@@ -36,7 +36,7 @@ export function SearchBar({ eventList, seteventList }) {
   // Validate event API
 
   const getEvents = async () => {
-    const res = await fetch("http://localhost:8000/events", {
+    const res = await fetch("https://event-management-backend-phiv.onrender.com/events", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -5,6 +5,7 @@ import { SearchBar } from "./SearchBar";
 import { EventCard } from "./EventCard";
 
 function Events() {
+  
   const [eventList, seteventList] = useState([]);
 
   // Validate event API

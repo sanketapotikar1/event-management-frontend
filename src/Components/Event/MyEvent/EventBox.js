@@ -6,18 +6,21 @@ export function EventBox({ eventList, index }) {
   const id = eventList;
 
   const GetEvent = async () => {
-    const res = await fetch(`https://event-management-backend-phiv.onrender.com/EventDetails/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      `https://event-management-backend-phiv.onrender.com/EventDetails/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = await res.json();
     console.log(data);
 
     if (res.status === 422 || !data) {
-      console.log("error in Single event  ");
+      console.log("error in Single event");
     } else {
       setEvent(data.events);
       console.log("Single event recived", event);

@@ -46,7 +46,7 @@ function StudentRegistration() {
     console.log(`register method triggred`);
     console.log(id);
 
-    fetch(`http://localhost:8000/eventRegister/${id}`, {
+    fetch(`https://event-management-backend-phiv.onrender.com/eventRegister/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(StudentData),
